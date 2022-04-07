@@ -20,5 +20,5 @@ def acceleration_calculator():
             error = (a1 - i) * 100 / a1
         else:
             error = (i - a1) * 100 / a1
-        print(f'a1과{i : 1.4f}와의 퍼센트 오차 :{i : 3.4f}')         
+        print(f'a1과{i : 1.4f}와의 퍼센트 오차 :{error : 3.4f}')         
 acceleration_calculator()
