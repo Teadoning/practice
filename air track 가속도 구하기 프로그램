@@ -1,0 +1,24 @@
+def t_calculation(set) :
+    global i
+    t1 = float(input(f'실험 {set}의 photogate2 time '))
+    t2 = float(input(f'실험 {set}의 photogate1 time '))
+    global time
+    time = t2 - t1  
+def acceleration_calculator():
+    m1, m2, distance, total_t, total_v2 = int(input('카트질량을 입력하세요. ')) / 1000, int(input('추질량을 입력하세요. ')) / 1000, int(input('거리를 입력하세요. ')) / 100, 0, 0
+    for i in range(1, 11, 1):
+        t_calculation(i)
+        total_t += time
+        v2 = float(input(f'실험 {i}의 속도(V2)를 입력하세요. '))
+        total_v2 += v2
+    average_t, average_v2 = (total_t / 10), (total_v2 / 10)
+    a1, a2, a3 = (m2 * 9.8) / (m1 + m2), (2 * distance) / (average_t ** 2), (average_v2 ** 2) / (2 * distance)
+    print(f'\n시간 평균 :{average_t : 1.4f}, 속도(V2) 평균 :{average_v2 : 1.4f}')
+    print(f'a1(이론값) :{a1 : 1.4f}, a2 :{a2 : 1.4f}, a3 :{a3 : 1.4f}')
+    for i in (a2, a3):
+        if a1 - i >= 0:
+            error = (a1 - i) * 100 / a1
+        else:
+            error = (i - a1) * 100 / a1
+        print(f'a1과{i : 1.4f}와의 퍼센트 오차 :{i : 3.4f}')         
+acceleration_calculator()
