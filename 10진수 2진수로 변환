@@ -1,0 +1,11 @@
+def two_jinsu(ten_jinsu) :
+    rest = []
+    while int(ten_jinsu) > 0 :
+        rest.append(int(ten_jinsu % 2))
+        ten_jinsu /= 2
+        two_jinsu
+    rest.reverse()
+    for i in range(0, len(rest)) :
+        print(rest[i], end = '')       
+var = int(input('decimal value:'))   
+two_jinsu(var)     
