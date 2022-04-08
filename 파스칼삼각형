@@ -1,0 +1,32 @@
+def combination(n, r) :
+    n_sum = 1
+    r_sum = 1
+    two_sum = 1
+    two_first = (n - r)
+    while n > 0 :
+        n_sum = n_sum * n
+        n -= 1  
+    while r > 0 :
+        r_sum = r_sum * r
+        r -= 1         
+    while two_first > 0 :
+        two_sum = two_sum * two_first  
+        two_first -= 1
+    result = int(n_sum / (two_sum * r_sum)) 
+    return result
+def triangle(layer) :
+    triangle_list = [[1]]
+    limit = 2
+    if layer == 1 :
+        pass
+    else :    
+        for i in range(1, layer) :
+            triangle_list.append([])
+            for j in range(0, limit) :
+                triangle_list[i].append(combination(i, j))
+            limit += 1
+    for k in range(0, layer):
+        print('  '*(layer - k), end='')
+        print('   '.join(map(str, triangle_list[k])))   
+num = int(input('layer:'))
+triangle(num)   
